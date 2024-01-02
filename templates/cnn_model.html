@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h1>CNN Model Results</h1>
+
+  <h2>Data Description</h2>
+  <p>{{ template_data.data_description }}</p>
+
+  <h2>Model Summary</h2>
+  <pre>{{ template_data.model_summary }}</pre>
+
+  <h2>Training History</h2>
+  <pre>{{ template_data.training_history }}</pre>
+
+  <h2>Evaluation Metrics</h2>
+  <p>Precision: {{ template_data.precision }}</p>
+  <p>Recall: {{ template_data.recall }}</p>
+  <p>Accuracy: {{ template_data.accuracy }}</p>
+
+  <h2>Predicted Class</h2>
+  <p>Predicted class for the first image: {{ template_data.predicted_class }}</p>
+
+  <h2>Confusion Matrix</h2>
+  <p>Number of images: {{ template_data.num_images }}</p>
+  <p>True Positive: {{ template_data.true_positive }}</p>
+  <p>True Negative: {{ template_data.true_negative }}</p>
+  <p>False Positive: {{ template_data.false_positive }}</p>
+  <p>False Negative: {{ template_data.false_negative }}</p>
+
+  <h2>Sample Images</h2>
+<div class="row">
+  {% for image in template_data.sample_images %}
+    <div class="col-md-3">
+      <img src="data:image/jpeg;base64,{{ image }}" alt="Sample Image">
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

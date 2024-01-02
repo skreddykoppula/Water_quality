@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+  <h1>Image Prediction</h1>
+
+  <form method="POST" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+    <label for="image">Upload an image:</label>
+    <input type="file" name="file" accept=".jpg, .jpeg, .png">
+    <input type="submit" value="predict">
+  </form>
+  
+
+  <!-- Display the prediction result here -->
+  <div>
+    <h1>{{ prediction_result }}</h1>
+  </div>
+{% endblock %}
+
+

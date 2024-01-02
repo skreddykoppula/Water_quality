@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    
+    <title>Water Quality Detection</title>
+    <style>
+        /* Apply a margin to the header to separate it from the content */
+.site-header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+/* Style the navigation links */
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+/* Center the buttons and add some spacing */
+.container.text-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Style the buttons */
+.container.text-center .btn {
+    margin: 10px; /* Add margin between buttons */
+}
+
+/* Add more CSS styles as needed for your specific design */
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('home') }}">Water Quality Detection</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </main>
+    <div>
+        <a href="{{ url_for('cnn_model') }}" id="cnn_model" class="btn btn-primary">CNN MODEL</a>
+        <a href="{{ url_for('loss_accuracy') }}" id="loss_accuracy" class="btn btn-primary">loss_accuracy</a>
+        <a href="{{ url_for('predict') }}" id="predict" class="btn btn-primary">predict</a>
+        
+    </div>
+    {% block content %}{% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

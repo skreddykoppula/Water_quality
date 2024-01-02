@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h1>Loss and Accuracy Plots</h1>
+
+  <h2>Loss Plot</h2>
+  <img src="{{ url_for('static', filename='loss_plot.png') }}" alt="Loss Plot">
+
+  <h2>Accuracy Plot</h2>
+  <img src="{{ url_for('static', filename='accuracy_plot.png') }}" alt="Accuracy Plot">
+{% endblock %}
